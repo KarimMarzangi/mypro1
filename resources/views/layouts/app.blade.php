@@ -69,7 +69,15 @@
                                     </form>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('creatpost') }}">Create Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('show') }}">Post Lists</a>
+                            </li>
+                            
                         @endguest
+                        
                     </ul>
                 </div>
             </div>

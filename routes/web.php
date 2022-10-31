@@ -27,3 +27,6 @@ Route::group(['middleware' => 'Moderator'], function () {
     Route::post('/creatingpost',[PostController::class,'create'])->name('creatingpost');
 
 });
+
+Route::get('/list',[PostController::class,'show'])->name('show');
+Route::get('/postdetails/{id}', [PostController::class,'postdetails'])->name('postdetails');

@@ -28,4 +28,21 @@ class PostController extends Controller
         $user->posts()->save($post);
         return Redirect()->back()->with(['message' => 'Post created...']);
     }
+
+    public function show()
+    {
+        //sort
+        $posts = Post::paginate(6);
+        // dd($posts);
+        return view('layouts.list', ['posts'=> $posts]);
+    }
+    public function postdetails($id)
+    {
+        $post = Post::findOrFail($id);
+        
+        
+        return view('layouts.postdetails', ['post'=> $post]);
+        
+
+    }
 }
