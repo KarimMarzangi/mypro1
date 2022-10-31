@@ -32,7 +32,7 @@ class PostController extends Controller
     public function show()
     {
         //sort
-        $posts = Post::withCount(['comments'])->paginate(6);
+        $posts = Post::withCount(['comments'])->orderBy('comments_count', 'desc')->paginate(6);
         // dd($posts);
         return view('layouts.list', ['posts'=> $posts]);
     }

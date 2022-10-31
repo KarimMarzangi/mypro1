@@ -38,7 +38,7 @@ label small {
 						<p class="card-text">{{ $post->description }}</p>
 						<p class="card-text"><small class="text-muted">Auther: {{ $post->user()->first()->name }} </small></p>
 						<p class="card-text"><small class="text-muted">Date: {{ $post->created_at->format('d/m/Y') }} </small></p>
-						<p class="card-text"><small class="text-muted">#comment: 200</small></p>
+						<p class="card-text"><small class="text-muted">#comment: {{ $post->comments->count() }}</small></p>
 					</div>
 				</div>
 
