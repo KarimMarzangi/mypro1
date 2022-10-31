@@ -75,6 +75,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('show') }}">Post Lists</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('delete') }}">Delete Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('deleteTrash') }}">Post Trash</a>
+                            </li>
                             
                         @endguest
                         

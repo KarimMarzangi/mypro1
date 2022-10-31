@@ -33,3 +33,12 @@ Route::get('/list',[PostController::class,'show'])->name('show');
 Route::get('/postdetails/{id}', [PostController::class,'postdetails'])->name('postdetails');
 
 Route::post('/creatingcomment/{id}', [CommentController::class, 'creatingcomment'])->name('creatingcomment');
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/deletepost', [PostController::class, 'delete'])->name('delete');
+    Route::get('/delpost/{id}',[PostController::class, 'delpost'])->name('delpost');
+    Route::get('/deletepostTrash', [PostController::class, 'deleteTrash'])->name('deleteTrash');
+    Route::get('/delpostTrash/{id}',[PostController::class, 'delpostTrash'])->name('delpostTrash');
+    Route::get('/restorepostTrash/{id}',[PostController::class, 'restorepostTrash'])->name('restorepostTrash');
+
+});

@@ -46,4 +46,35 @@ class PostController extends Controller
         }
         return redirect()->back();
     }
+
+    public function delete()
+    {
+        $posts = Post::paginate(10);
+        // dd($posts);
+        return view('layouts.delpost', ['posts'=> $posts]);
+    }
+    public function delpost($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->back();
+    }
+    public function deleteTrash()
+    {
+        $posts = Post::onlyTrashed()->paginate(10);
+        // dd($posts);
+        return view('layouts.delpostTrash', ['posts'=> $posts]);
+    }
+    public function delpostTrash($id)
+    {
+        $post = Post::where('id',$id)->forceDelete();
+        return redirect()->back();
+    }
+    
+    public function restorepostTrash($id)
+    {
+        $post = Post::onlyTrashed()->find($id)->restore();
+        // $post->restore();
+        return redirect()->back();
+    }
 }
