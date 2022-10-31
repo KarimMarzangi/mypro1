@@ -32,7 +32,7 @@ class PostController extends Controller
     public function show()
     {
         //sort
-        $posts = Post::paginate(6);
+        $posts = Post::withCount(['comments'])->paginate(6);
         // dd($posts);
         return view('layouts.list', ['posts'=> $posts]);
     }
@@ -40,9 +40,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         
-        
-        return view('layouts.postdetails', ['post'=> $post]);
-        
-
+        if($post){
+            $comments = $post->comments()->get();
+            return view('layouts.postdetails', ['post'=> $post, 'comments'=> $comments]);
+        }
+        return redirect()->back();
     }
 }

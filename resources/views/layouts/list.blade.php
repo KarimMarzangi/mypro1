@@ -52,7 +52,7 @@ label small {
 		
 	</div>
 	<br><br>
-	{{ $posts->links('pagination::bootstrap-4') }}
+	{{-- {{ $posts->links('pagination::bootstrap-4') }} --}}
 </div>
 
 

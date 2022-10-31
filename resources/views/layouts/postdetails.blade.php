@@ -4,7 +4,14 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style>
-
+.comment1
+{
+	background-color: rgb(156, 16, 16);
+	padding: 10px;
+	border: 1px solid #666;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
 .require {
     color: #666;
 }
@@ -12,14 +19,10 @@ label small {
     color: #999;
     font-weight: normal;
 }
-.comment
-{
-	background-color: rgb(230, 225, 225);
-	padding: 10px;
-	border: 1px solid #666;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
+
+
+
+
 
 </style>
 @endsection
@@ -79,7 +82,14 @@ label small {
 			 <h3>List of Comments</h3>
 			 <br>
 
-			 
+			 @foreach($comments as $comment)
+			 <div class="comment1" style="background-color: rgb(230, 225, 225);padding: 10px;border: 1px solid #666;border-radius: 5px;margin-bottom: 10px;">
+				<span class="card-text"><small class="text-muted">sender: {{ $comment->user()->first()->name }} </small></span>&nbsp;&nbsp;&nbsp;
+				<span class="card-text"><small class="text-muted">Date: {{ $comment->created_at->format('d/m/Y') }} </small></span>
+				<h5>	{{ $comment->comment }} </h5>
+
+			 </div>
+			 @endforeach
 					
 			  
 		</div>
