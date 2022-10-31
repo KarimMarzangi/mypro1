@@ -23,4 +23,34 @@ class CommentController extends Controller
         $post->comments()->save($comment);
         return Redirect()->back()->with(['messages'=>'ok']);
     }
+
+
+    public function deletecomment()
+    {
+        $comments = Comment::paginate(10);
+        return view('layouts.delcomment', ['comments'=> $comments]);
+    }
+    public function delcomment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back();
+    }
+    public function deletecommentTrash()
+    {
+        $comments = Comment::onlyTrashed()->paginate(10);
+        return view('layouts.delcommentTrash', ['comments'=> $comments]);
+    }
+    public function delcommentTrash($id)
+    {
+        $comment = Comment::where('id',$id)->forceDelete();
+        return redirect()->back();
+    }
+    
+    public function restorecommentTrash($id)
+    {
+        $comment = Comment::onlyTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
+
 }

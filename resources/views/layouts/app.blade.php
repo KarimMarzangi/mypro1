@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .nav-link1
+        {
+            background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -69,18 +75,29 @@
                                     </form>
                                 </div>
                             </li>
+                            @if(Auth()->user()->type=='moderator')
                             <li class="nav-item">
-                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('creatpost') }}">Create Post</a>
+                                <a class="nav-link nav-link1" href="{{ route('creatpost') }}">Create Post</a>
                             </li>
+                            @endif
                             <li class="nav-item">
-                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('show') }}">Post Lists</a>
+                                <a class="nav-link nav-link1" href="{{ route('show') }}">Post Lists</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('delete') }}">Delete Post</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;" href="{{ route('deleteTrash') }}">Post Trash</a>
-                            </li>
+                            @if(Auth()->user()->type=='admin')
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link1" href="{{ route('delete') }}">Delete Post</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link1" href="{{ route('deleteTrash') }}">Post Trash</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link1" href="{{ route('delete') }}">Delete Comment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link1" href="{{ route('deleteTrash') }}">Comment Trash</a>
+                                </li>
+                            @endif
                             
                         @endguest
                         

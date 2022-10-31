@@ -41,4 +41,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/delpostTrash/{id}',[PostController::class, 'delpostTrash'])->name('delpostTrash');
     Route::get('/restorepostTrash/{id}',[PostController::class, 'restorepostTrash'])->name('restorepostTrash');
 
+    Route::get('/deletecomment', [CommentController::class, 'deletecomment'])->name('deletecomment');
+    Route::get('/delcomment/{id}',[CommentController::class, 'delcomment'])->name('delcomment');
+    Route::get('/deletecommentTrash', [CommentController::class, 'deletecommentTrash'])->name('deletecommentTrash');
+    Route::get('/delcommentTrash/{id}',[CommentController::class, 'delcommentTrash'])->name('delcommentTrash');
+    Route::get('/restorecommentTrash/{id}',[CommentController::class, 'restorecommentTrash'])->name('restorecommentTrash');
+
+    
+
+
 });
