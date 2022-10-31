@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'Moderator'], function () {
+
+    Route::get('/createpost',[PostController::class, 'createpost'])->name('creatpost');
+    Route::post('/creatingpost',[PostController::class,'create'])->name('creatingpost');
+
+});

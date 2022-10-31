@@ -30,8 +30,14 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
-        'email_verified_at',
+        // 'email_verified_at',
     ];
+
+    public function posts()
+    {
+        // Moderator can create several Posts
+        return $this->hasMany(Post::class,'user_id','id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
