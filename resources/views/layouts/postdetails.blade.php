@@ -55,7 +55,7 @@ label small {
 <br><br>
 				<h3>Create Comment</h3>
     		
-				<form action="" method="POST">
+				<form action="{{ route('creatingcomment',['id'=>$post->id]) }}" method="POST">
     		    
     		    
                 @csrf

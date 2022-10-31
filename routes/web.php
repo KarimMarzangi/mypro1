@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,5 @@ Route::group(['middleware' => 'Moderator'], function () {
 
 Route::get('/list',[PostController::class,'show'])->name('show');
 Route::get('/postdetails/{id}', [PostController::class,'postdetails'])->name('postdetails');
+
+Route::post('/creatingcomment/{id}', [CommentController::class, 'creatingcomment'])->name('creatingcomment');
