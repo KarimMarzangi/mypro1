@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('state')->default(0);
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

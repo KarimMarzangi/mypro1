@@ -16,11 +16,16 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
+        if(!(auth()->check()))
+        {
+            return response()->json(['error' => 'Not authorized.'],403);
+
+        }
         if(auth()->user()->type !== 'admin')
-            {
-                //dd("ssss");
-                return response()->json(['error' => 'Not authorized.'],403);
-            }
+        {
+            //dd("ssss");
+            return response()->json(['error' => 'Not authorized.'],403);
+        }
             
         return $next($request);
     }

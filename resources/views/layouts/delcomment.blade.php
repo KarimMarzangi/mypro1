@@ -28,7 +28,7 @@ label small {
 	    
 	    <div class="col-md-10 col-md-offset-1">
 	        
-    		<h1>List of Posts</h1>
+    		<h1>List of Comment</h1>
     		
     		
 			

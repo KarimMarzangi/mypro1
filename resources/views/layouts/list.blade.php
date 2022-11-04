@@ -32,7 +32,7 @@ label small {
     		
     		@foreach ($posts as $post)
 
-				<div class="card col-md-4" style="float: left;">
+				<div class="card col-md-4" style="float: left;margin:0px;padding:0px;height:300px;">
 					<div class="card-body">
 						<a href="{{ route('postdetails', ['id'=>$post->id]) }}"><h3 class="card-title">{{ $post->title }}</h3></a>
 						<p class="card-text">{{ $post->description }}</p>
@@ -52,7 +52,7 @@ label small {
 		
 	</div>
 	<br><br>
-	{{-- {{ $posts->links('pagination::bootstrap-4') }} --}}
+	{{ $posts->links('pagination::bootstrap-4') }}
 </div>
 
 

@@ -13,7 +13,10 @@ class PostController extends Controller
     }
     public function create(Request $request)
     {
+        /*
+            This method creates a post for the logged in user. only Mondary can see it.
 
+        */
         $validated = $request->validate([
             'title' => 'required|max:64',
             'description' => 'required',
@@ -31,13 +34,20 @@ class PostController extends Controller
 
     public function show()
     {
-        //sort
+        /*
+            This method sorts the posts based on the number of comments.
+
+        */
         $posts = Post::withCount(['comments'])->orderBy('comments_count', 'desc')->paginate(6);
-        // dd($posts);
+        
         return view('layouts.list', ['posts'=> $posts]);
     }
     public function postdetails($id)
     {
+        /*
+            This method displays the details of the post.
+
+        */
         $post = Post::findOrFail($id);
         
         if($post){
@@ -49,32 +59,50 @@ class PostController extends Controller
 
     public function delete()
     {
+        /*
+            This method shows the list of posts to be deleted. only admin can see it.
+
+        */
         $posts = Post::paginate(10);
-        // dd($posts);
         return view('layouts.delpost', ['posts'=> $posts]);
     }
     public function delpost($id)
     {
+        /*
+            This method deletes a post and send to Trash-list. only admin can see it.
+
+        */
         $post = Post::find($id);
         $post->delete();
         return redirect()->back();
     }
     public function deleteTrash()
     {
+        /*
+            This method shows the list of Trash-posts to be deleted. only admin can see it.
+
+        */
         $posts = Post::onlyTrashed()->paginate(10);
         // dd($posts);
         return view('layouts.delpostTrash', ['posts'=> $posts]);
     }
     public function delpostTrash($id)
     {
+        /*
+            This method deletes a post forever. only admin can see it.
+
+        */
         $post = Post::where('id',$id)->forceDelete();
         return redirect()->back();
     }
     
     public function restorepostTrash($id)
     {
+        /*
+            This method restores a deleted post. only admin can see it.
+
+        */
         $post = Post::onlyTrashed()->find($id)->restore();
-        // $post->restore();
         return redirect()->back();
     }
 }

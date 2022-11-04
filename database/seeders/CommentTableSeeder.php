@@ -19,9 +19,9 @@ class CommentTableSeeder extends Seeder
         for($i=1;$i<100;$i++)
         {
             $user_id = rand(1,10);
-            $post_id = rand(1,10);
+            $post_id = rand(1,9);
             Comment::create([
-                'comment'=> $faker->paragraph,
+                'comment'=> $faker->sentence(3),
                 'post_id'=> $post_id,
                 'user_id'=> $user_id,
             ]);

@@ -21,7 +21,10 @@
     <style>
         .nav-link1
         {
-            background-color:blueviolet;border:1px solid red;color:white;border-radius:5px;
+            border:1px solid #e1e1e1;border-radius:5px;margin-right: 5px;
+        }
+        .nav-link1:hover{
+            background-color: #e1e1e1;
         }
     </style>
 </head>
@@ -58,23 +61,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                            
                             @if(Auth()->user()->type=='moderator')
                             <li class="nav-item">
                                 <a class="nav-link nav-link1" href="{{ route('creatpost') }}">Create Post</a>
@@ -92,13 +79,29 @@
                                     <a class="nav-link nav-link1" href="{{ route('deleteTrash') }}">Post Trash</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link1" href="{{ route('delete') }}">Delete Comment</a>
+                                    <a class="nav-link nav-link1" href="{{ route('deletecomment') }}">Delete Comment</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link nav-link1" href="{{ route('deleteTrash') }}">Comment Trash</a>
+                                    <a class="nav-link nav-link1" href="{{ route('deletecommentTrash') }}">Comment Trash</a>
                                 </li>
                             @endif
-                            
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                         
                     </ul>
